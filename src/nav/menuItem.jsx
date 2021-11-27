@@ -1,16 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { connect } from "react-redux";
 function MenuItem(props) {
   let menuItemUnderline = styles.AddMenuBorder;
+  let url = useLocation();
+
   if (props.isMobile) menuItemUnderline = "null";
   return (
     <ul className={props.menu}>
       <li onClick={() => props.MainContentChange("Home")}>
         <Link
           to="/"
-          className={props.mainContent === "Home" ? menuItemUnderline : null}
+          className={url.pathname === "/" ? menuItemUnderline : null}
         >
           Home
         </Link>
@@ -18,7 +20,7 @@ function MenuItem(props) {
       <li onClick={() => props.MainContentChange("About")}>
         <Link
           to="/about"
-          className={props.mainContent === "About" ? menuItemUnderline : null}
+          className={url.pathname === "/about" ? menuItemUnderline : null}
         >
           About
         </Link>
@@ -26,16 +28,17 @@ function MenuItem(props) {
 
       <li onClick={() => props.MainContentChange("MyWorks")}>
         <Link
-          to="/myWorks"
-          className={props.mainContent === "MyWorks" ? menuItemUnderline : null}
+          to="/myworks"
+          className={url.pathname === "/myworks" ? menuItemUnderline : null}
         >
           My Works
         </Link>
+        <div></div>
       </li>
       <li onClick={() => props.MainContentChange("MyCV")}>
         <Link
           to="/myCV"
-          className={props.mainContent === "MyCV" ? menuItemUnderline : null}
+          className={url.pathname === "/myCV" ? menuItemUnderline : null}
         >
           My CV
         </Link>

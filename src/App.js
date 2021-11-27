@@ -5,35 +5,69 @@ import Nav from "./nav/nav";
 import Footer from "./footer/footer";
 import About from "./about/about";
 import MyCV from "./myCV/myCV";
-import MyWorks from "./myWorks/myWorks";
 import Home from "./home/home";
 import NoMatch from "./404/404";
+import MyWorks from "./myWorks/myWorks";
 
 function App() {
   return (
     <Router>
-      <Nav></Nav>
+      <div>
+        <Nav />
 
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/myCV">
-          <MyCV />
-        </Route>
-        <Route path="/myWorks">
-          <MyWorks />
-        </Route>
-        <Route path="*">
-          <NoMatch />
-        </Route>
-      </Switch>
-      <Footer></Footer>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/myCV" component={MyCV} />
+          <Route path="/myworks" component={MyWorks}></Route>
+
+          <Route component={NoMatch} />
+        </Switch>
+        <Footer></Footer>
+      </div>
     </Router>
   );
 }
 
 export default App;
+
+/*(
+<Router>
+      <div>
+        <Nav />
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/about" component={About} />
+          <Route path="/myCV" component={MyCV} />
+          <Route path="/myworks">
+            <MyWorks />
+          </Route>
+          <Route component={NoMatch} />
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
+
+   
+  );*/
+
+/*
+<Router>
+      <div>
+        <Nav></Nav>
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/myCV" component={MyCV} />
+          <Route path="/myworks" component={MyWorks}></Route>
+
+          <Route component={NoMatch} />
+        </Switch>
+        <Footer></Footer>
+      </div>
+    </Router>
+  */
